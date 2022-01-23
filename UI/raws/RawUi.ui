@@ -41,8 +41,8 @@
             <height>693</height>
            </rect>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_7">
-           <item>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0">
             <widget class="QFrame" name="ClassNameFrame">
              <property name="autoFillBackground">
               <bool>false</bool>
@@ -70,7 +70,7 @@
              </layout>
             </widget>
            </item>
-           <item>
+           <item row="1" column="0">
             <widget class="QFrame" name="FunctionFrame">
              <property name="autoFillBackground">
               <bool>false</bool>
@@ -310,7 +310,7 @@
              </layout>
             </widget>
            </item>
-           <item>
+           <item row="2" column="0">
             <widget class="QPushButton" name="CreateClass">
              <property name="text">
               <string>Create Class</string>
