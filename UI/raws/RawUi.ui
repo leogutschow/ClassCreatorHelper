@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>762</width>
-    <height>774</height>
+    <height>516</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,7 +38,7 @@
             <x>0</x>
             <y>0</y>
             <width>722</width>
-            <height>693</height>
+            <height>435</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout">
@@ -84,8 +84,18 @@
              <property name="frameShadow">
               <enum>QFrame::Raised</enum>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <item row="1" column="0">
+               <widget class="QPushButton" name="NewFunction">
+                <property name="text">
+                 <string>New Function</string>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
                <widget class="QFrame" name="frame_2">
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -93,58 +103,26 @@
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_6">
-                 <item>
-                  <widget class="QFrame" name="FunctionTypeFrame">
-                   <property name="autoFillBackground">
-                    <bool>false</bool>
+                <layout class="QGridLayout" name="gridLayout_3">
+                 <item row="1" column="2">
+                  <widget class="QLineEdit" name="FunctionNameEdit"/>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="FunctionType">
+                   <property name="text">
+                    <string>Function Type</string>
                    </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_3">
-                    <item>
-                     <widget class="QLabel" name="FunctionType">
-                      <property name="text">
-                       <string>Function Type</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QComboBox" name="FunctionTypeEdit">
-                      <property name="editable">
-                       <bool>false</bool>
-                      </property>
-                      <item>
-                       <property name="text">
-                        <string>Custom</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>__init__</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>__str__</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>__call__</string>
-                       </property>
-                      </item>
-                     </widget>
-                    </item>
-                   </layout>
                   </widget>
                  </item>
-                 <item>
-                  <widget class="QFrame" name="FunctionNameFrame">
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="FunctionName">
+                   <property name="text">
+                    <string>Function Name</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0" colspan="3">
+                  <widget class="QFrame" name="FunctionAttrsFrame">
                    <property name="autoFillBackground">
                     <bool>false</bool>
                    </property>
@@ -156,155 +134,110 @@
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_2">
                     <item>
-                     <widget class="QLabel" name="FunctionName">
+                     <widget class="QLabel" name="label">
                       <property name="text">
-                       <string>Function Name</string>
+                       <string>Attribute Name</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="FunctionNameEdit"/>
+                     <widget class="QLineEdit" name="AttributeNameEdit"/>
+                    </item>
+                    <item>
+                     <widget class="QComboBox" name="AttrType">
+                      <property name="editable">
+                       <bool>true</bool>
+                      </property>
+                      <item>
+                       <property name="text">
+                        <string>Type</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>None</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Int</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Float</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>String</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>List</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Tuple</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Dict</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Function</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Class</string>
+                       </property>
+                      </item>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
                  </item>
-                 <item>
-                  <widget class="QFrame" name="FunctionAttrsFrame">
-                   <property name="autoFillBackground">
+                 <item row="0" column="2">
+                  <widget class="QComboBox" name="FunctionTypeEdit">
+                   <property name="editable">
                     <bool>false</bool>
                    </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
+                   <item>
+                    <property name="text">
+                     <string>Custom</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>__init__</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>__str__</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>__call__</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="3" column="0" colspan="3">
+                  <widget class="QPushButton" name="NewAttribute">
+                   <property name="text">
+                    <string>New Attibute</string>
                    </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_5">
-                    <item>
-                     <widget class="QFrame" name="FunctioNameLabelFrame">
-                      <property name="autoFillBackground">
-                       <bool>false</bool>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_4">
-                       <item>
-                        <widget class="QLabel" name="FunctionAttributes">
-                         <property name="text">
-                          <string>Function Attributes</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="SingleAttrFrame">
-                      <property name="autoFillBackground">
-                       <bool>false</bool>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_4">
-                       <item>
-                        <widget class="QLabel" name="label">
-                         <property name="text">
-                          <string>Attribute Name</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="AttributeNameEdit"/>
-                       </item>
-                       <item>
-                        <widget class="QComboBox" name="AttrType">
-                         <property name="editable">
-                          <bool>true</bool>
-                         </property>
-                         <item>
-                          <property name="text">
-                           <string>Type</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>None</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Int</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Float</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>String</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>List</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Tuple</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Dict</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Function</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Class</string>
-                          </property>
-                         </item>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QPushButton" name="NewAttribute">
-                      <property name="text">
-                       <string>New Attibute</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
                   </widget>
                  </item>
                 </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="NewFunction">
-                <property name="text">
-                 <string>New Function</string>
-                </property>
-                <property name="checkable">
-                 <bool>false</bool>
-                </property>
                </widget>
               </item>
              </layout>
