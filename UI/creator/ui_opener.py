@@ -1,9 +1,12 @@
 from contextlib import AbstractAsyncContextManager
+from operator import xor
 from re import A
 from UI.raws.PythonUI import Ui_MainWindow
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QMainWindow, QFrame
-import os
+from utils import filters, file_creator
+
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -12,7 +15,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.class_name = self.ClassNameEdit
         self.NewFunction.clicked.connect(self.new_func)
         self.NewAttribute.clicked.connect(self.new_attr)
-        # self.create_class = self.CreateClass.clicked.connect()
+        self.create_class = self.CreateClass.clicked.connect(self.new_class)
 
         #Dicionário para armazenar as informações da classes, funções e seus atributos
 
@@ -83,7 +86,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         attr_frame = QtWidgets.QFrame(function_frame)
         attr_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         attr_frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        attr_frame.setObjectName(f'FunctionAttrFrame{functions_count}')
+        attr_frame.setObjectName(f'FunctionAttrsFrame{functions_count}')
 
         horizontal_layout = QtWidgets.QHBoxLayout(attr_frame)
         horizontal_layout.setObjectName(f'horizontalLayout{functions_count}')
@@ -160,7 +163,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             attr_frame = QtWidgets.QFrame(parent)
             attr_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
             attr_frame.setFrameShadow(QtWidgets.QFrame.Raised)
-            attr_frame.setObjectName(f'FunctionAttrFrame_{attr_count}')
+            attr_frame.setObjectName(f'FunctionAttrsFrame_{attr_count}')
 
             horizontal_layout = QtWidgets.QHBoxLayout(attr_frame)
             horizontal_layout.setObjectName(f'horizontalLayout_1{attr_count}')
@@ -195,13 +198,62 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             layout.removeWidget(btn)
             layout.addWidget(btn, a+1, b, c, d)
 
+    #Função Geral para Pegar os Valores e chamar Outras Classes para
+    #criar o arquivo da classe em .py
+    def new_class(self):
+        #Pegando o botão para referência
+        btn = self.sender()
+        parent = btn.parent()
 
+        #Colocando o nome da Classe no Dicionario
+        class_name = parent.findChild(QtWidgets.QLineEdit, 'ClassNameEdit').text()
+        
+        self.class_creator['class']['name'] = class_name
+
+        #Pegando os Frames das Funções
+        parent = parent.findChild(QtWidgets.QFrame, 'FunctionFrame')
+
+
+
+        functions = [x for x in parent.findChildren(QtWidgets.QFrame) if 'FunctionCreator' in x.objectName()]
+
+        print('----------------Functions----------------')
+        for i in functions:
+            print(i.objectName())
+            #Pegando o Tipo e o Nome da Função que está sendo criada
+            type = i.findChild(QtWidgets.QComboBox).currentText()
+            if type == 'Custom':
+                name = i.findChild(QtWidgets.QLineEdit).text()
+            else:
+                name = type
+
+            #Acessando as funções do Dicionário pelo Index
+            idx = functions.index(i)
+            creator_functions = list(self.class_creator['class']['functions'])
+            self.class_creator['class']['functions'][creator_functions[idx]]['type'] = type
+            self.class_creator['class']['functions'][creator_functions[idx]]['name'] = name
+            print(self.class_creator['class']['functions'])
+
+            print('')
+
+            print('-----------attrs-----------')
+            #Pegando os Atributos e seus tipos de cada Função
+            attrs = [x for x in i.findChildren(QtWidgets.QFrame) if 'AttrsFrame' in x.objectName()]
+
+
+            for j in attrs:
+                print(j.objectName())
+
+            print('--------------------------------')
+        
 
             
 
+            
 
         
+        
+        
 
-    
 
         
