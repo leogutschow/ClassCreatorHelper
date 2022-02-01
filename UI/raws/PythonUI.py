@@ -136,12 +136,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Class Helper"))
         self.ClassName.setText(_translate("MainWindow", "Class Name"))
         self.NewFunction.setText(_translate("MainWindow", "New Function"))
         self.FunctionType.setText(_translate("MainWindow", "Function Type"))
         self.FunctionName.setText(_translate("MainWindow", "Function Name"))
-        self.label.setText(_translate("MainWindow", "Attribute Name"))
+        self.label.setText(_translate("MainWindow", "Parameter Name"))
         self.AttrType.setItemText(0, _translate("MainWindow", "None"))
         self.AttrType.setItemText(1, _translate("MainWindow", "Int"))
         self.AttrType.setItemText(2, _translate("MainWindow", "Float"))
@@ -155,5 +155,5 @@ class Ui_MainWindow(object):
         self.FunctionTypeEdit.setItemText(1, _translate("MainWindow", "__init__"))
         self.FunctionTypeEdit.setItemText(2, _translate("MainWindow", "__str__"))
         self.FunctionTypeEdit.setItemText(3, _translate("MainWindow", "__call__"))
-        self.NewAttribute.setText(_translate("MainWindow", "New Attribute"))
+        self.NewAttribute.setText(_translate("MainWindow", "New Parameter"))
         self.CreateClass.setText(_translate("MainWindow", "Create Class"))

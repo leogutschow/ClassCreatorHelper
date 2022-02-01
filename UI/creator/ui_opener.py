@@ -9,6 +9,7 @@ from utils import filters, file_creator
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
+    
     def __init__(self, parent=None):
         super().__init__(parent)
         super().setupUi(self)
@@ -212,14 +213,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         #Pegando os Frames das Funções
         parent = parent.findChild(QtWidgets.QFrame, 'FunctionFrame')
-
-
-
         functions = [x for x in parent.findChildren(QtWidgets.QFrame) if 'FunctionCreator' in x.objectName()]
 
-        print('----------------Functions----------------')
         for i in functions:
-            print(i.objectName())
             #Pegando o Tipo e o Nome da Função que está sendo criada
             type = i.findChild(QtWidgets.QComboBox).currentText()
             if type == 'Custom':
@@ -232,19 +228,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             creator_functions = list(self.class_creator['class']['functions'])
             self.class_creator['class']['functions'][creator_functions[idx]]['type'] = type
             self.class_creator['class']['functions'][creator_functions[idx]]['name'] = name
-            print(self.class_creator['class']['functions'])
 
-            print('')
-
-            print('-----------attrs-----------')
             #Pegando os Atributos e seus tipos de cada Função
             attrs = [x for x in i.findChildren(QtWidgets.QFrame) if 'AttrsFrame' in x.objectName()]
 
+            attr_dict = {}
 
             for j in attrs:
-                print(j.objectName())
+                #Pegando o Nome e Tipo dos parâmetros da função
+                attr_name = j.findChild(QtWidgets.QLineEdit).text()
+                print(attr_name)
+                attr_type = j.findChild(QtWidgets.QComboBox).currentText()
+                
+                #Criando um dicionario para substituir no Dicionário de Classe
+                attr_dict[attr_name] = attr_type
+                
+                
+            self.class_creator['class']['functions'][creator_functions[idx]]['attrs'] = attr_dict
 
-            print('--------------------------------')
         
 
             
