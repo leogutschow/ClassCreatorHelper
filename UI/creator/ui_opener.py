@@ -9,7 +9,7 @@ from utils import filters, file_creator
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
-    
+
     def __init__(self, parent=None):
         super().__init__(parent)
         super().setupUi(self)
@@ -227,7 +227,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             idx = functions.index(i)
             creator_functions = list(self.class_creator['class']['functions'])
             self.class_creator['class']['functions'][creator_functions[idx]]['type'] = type
-            self.class_creator['class']['functions'][creator_functions[idx]]['name'] = name
+            if name != 'None':
+                self.class_creator['class']['functions'][creator_functions[idx]]['name'] = name
+            else:
+                self.class_creator['class']['functions'][creator_functions[idx]]['name'] = 'CustomFunction'
 
             #Pegando os Atributos e seus tipos de cada Função
             attrs = [x for x in i.findChildren(QtWidgets.QFrame) if 'AttrsFrame' in x.objectName()]
@@ -238,14 +241,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 #Pegando o Nome e Tipo dos parâmetros da função
                 attr_name = j.findChild(QtWidgets.QLineEdit).text()
                 print(attr_name)
-                attr_type = j.findChild(QtWidgets.QComboBox).currentText()
+                attr_type = j.findChild(QtWidgets.QComboBox).currentText().lower()
                 
                 #Criando um dicionario para substituir no Dicionário de Classe
-                attr_dict[attr_name] = attr_type
+                if attr_type != 'string' and attr_type != 'none':
+                    attr_dict[attr_name] = attr_type
+                elif attr_type == 'string': 
+                    attr_dict[attr_name] = 'str'
+                else: attr_dict[attr_name] = 'None'
                 
                 
             self.class_creator['class']['functions'][creator_functions[idx]]['attrs'] = attr_dict
-
+            file = file_creator.FileCreator()
+            file.create_main(self.class_creator)
         
 
             
