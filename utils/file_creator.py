@@ -7,7 +7,7 @@ class FileCreator:
         name = class_dict['class']['name']
         file_name = f'{name}.py'
         path = os.path.join('created_files', file_name)
-        with open(path, 'x') as file:
+        with open(path, 'w+') as file:
             string = f'class {name}:\n'
             functions = list(class_dict['class']['functions'])
             
