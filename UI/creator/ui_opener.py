@@ -94,7 +94,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         attr_name = QtWidgets.QLabel(attr_frame)
         attr_name.setObjectName(f'attr_name{functions_count}')
-        attr_name.setText('Attribute Name')
+        attr_name.setText('Parameter Name')
 
         horizontal_layout.addWidget(attr_name)
 
@@ -171,7 +171,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             attr_name = QtWidgets.QLabel(attr_frame)
             attr_name.setObjectName(f'attr_name_{attr_count}')
-            attr_name.setText('Attribute Name')
+            attr_name.setText('Parameter Name')
 
             horizontal_layout.addWidget(attr_name)
 
